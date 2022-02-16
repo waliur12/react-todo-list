@@ -40,6 +40,17 @@ function App() {
 setTasks(tasks.filter((task)=>task.id !==id))
   }
 
+
+  const addTask=(task)=>{
+    // console.log(task);
+    const id=tasks.length+1;
+    // console.log(id);
+    const newTask={id, ...task}
+    console.log(newTask);
+
+    // setTasks([...tasks,newTask]);
+  }
+
   const toggoleReminder=(id)=>{
 // console.log(id);
 setTasks(
@@ -53,7 +64,7 @@ setTasks(
     <div className="container">
       {/* <Header /> */}
       <Header title={'tests'}/>
-      <AddTask/>
+      <AddTask onAdd={addTask}/>
       {/* <h1>{firstName} {lastName}</h1> */}
 
     {tasks.length >0?<Tasks tasks={tasks} onDelete={deleteTask} onToggole={toggoleReminder}/>:'No task to show'}
